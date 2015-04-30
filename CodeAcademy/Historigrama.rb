@@ -1,19 +1,5 @@
-puts "Por favor insira um texto"
-text = gets.chomp
+puts "insira"
 
-words = text.split(" ")
+gets.chomp.split.each_with_object(Hash.new(0)) { |w,res| res[w] += 1 }
+								.sort_by {|_key, value| value }.reverse.each { |k,v| puts k + " " + v.to_s }
 
-frequencies = Hash.new(0)
-
-words.each do 
-    |word| frequencies[word] +=1
-end
-
-frequencies = frequencies.sort_by do |fre , count|
-    count
-end
-frequencies.reverse!
-
-frequencies.each do |fre , count|
-    puts fre + " " + count.to_s
-end
